@@ -44,7 +44,12 @@ public class Principal {
 			}
 			
 		}
-
+		
+		int continuar = JOptionPane.showConfirmDialog(null, "¿Desea continuar?");
+		
+		if (continuar > 0) {
+			JOptionPane.showMessageDialog(null, "Programa terminado");
+		}
 	}
 
 }
