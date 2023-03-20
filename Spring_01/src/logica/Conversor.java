@@ -1,65 +1,90 @@
 package logica;
 
 import javax.swing.JOptionPane;
+import java.util.stream.Stream;
 
 public class Conversor {
 	
 	private String [] lista = {"Conversor de moneda", "Conversor de temperatura"};
-	private String [] listaConversorDeMoneda = {"De Pesos a Dólar", "De Pesos a Euros", "De Pesos a Libras Esterlinas", "De Pesos a Yen Japonés", "De Pesos a Won sul-coreano", "De Dólar a Pesos", "De Euro a Pesos", "De Libras Esterlinas a Pesos", "De Yen Japonés a Pesos", "De Won sul-coreano a Pesos"};
+	private ConversorTemperaturas conversorTemp = new ConversorTemperaturas();
+	private ListaConversorMonedas listaNombreMonedas = new ListaConversorMonedas();
 	
+	private String[] listaPesoMonedaExtranjera = listaNombreMonedas.getListaPesoMonedaExtranjera();
+	private String[] listaMonedaExtranjeraPeso = listaNombreMonedas.getListaMonedaExtranjeraPeso();
+	private String[] listaMonedas = Stream.of(listaPesoMonedaExtranjera, listaMonedaExtranjeraPeso).flatMap(Stream::of).toArray(String[]::new);
+	private double cantidadMoneda;
+	private double resultado;
+	private String monedaElegida;
 	
 	public void iniciarPrograma() {
 		String seleccionConversor = this.seleccionarConversor();
-
+		
 		if (seleccionConversor.equals(lista[0])) {
-			if (this.seleccionarMoneda()!="") {
-				this.mostrarResultado();
+			this.setElegirMoneda();
+			if (this.getElegirMoneda()!="") {
+				this.setCantidadMoneda();
+				this.getResultado();
 			}
 			
 		} else if (seleccionConversor.equals(lista[1])) {
-			this.seleccionarTemperatura();
+			conversorTemp.seleccionarTemperatura();
 		}
 	}
-	
 	
 	public String seleccionarConversor() {
 		try {
-			return  (JOptionPane.showInputDialog(null, "Sellecione una opción de conversión", "Menu", JOptionPane.PLAIN_MESSAGE, null, lista, null).toString());
+			return (JOptionPane.showInputDialog(null, "Sellecione una opción de conversión", "Menu", JOptionPane.PLAIN_MESSAGE, null, lista, null).toString());
 		} catch (NullPointerException e) {
 			return "";
 		}
 	}
 	
-	public String seleccionarMoneda() {
+	public void setElegirMoneda() {
 		try {
-			return (JOptionPane.showInputDialog(null, "Eliga la moneda a la que deseas convertir tu dinero", "Monedas", JOptionPane.PLAIN_MESSAGE, null, listaConversorDeMoneda, null).toString());
+			monedaElegida = JOptionPane.showInputDialog(null, "Eliga la moneda a la que deseas convertir tu dinero", "Monedas", JOptionPane.PLAIN_MESSAGE, null, listaMonedas, null).toString();
 		} catch (NullPointerException e) {
-			return "";
+			monedaElegida = "";
 		}
 	}
 	
-	public double ingresarCantidad() {
+	public String getElegirMoneda() {
+		return this.monedaElegida;
+	}
+	
+	public void setCantidadMoneda() {
 		try {
-			 return Double.parseDouble(JOptionPane.showInputDialog("Ingrese la cantidad de dinero que deseas convertir:"));
+			cantidadMoneda = Double.parseDouble(JOptionPane.showInputDialog("Ingrese la cantidad de dinero que deseas convertir:"));
 		} catch (NumberFormatException e) {
 			JOptionPane.showMessageDialog(null, "Valor no válido");
-			return 0;
 		} catch (NullPointerException e) {
-			return 0;
+			// return 0;
 		}		
 	}
 	
-	public double convertirMoneda(double cantidad) {
-		double dolar = 380.00;
-		return cantidad * dolar;
+	public double getCantidadMoneda() {
+		return cantidadMoneda;
 	}
 	
-	public void mostrarResultado() {
-		double cantidad = this.ingresarCantidad();
+	public void setCalcularResultadoPesoMonedaExtranjera(double cantidad) {
+		double valorMoneda = listaNombreMonedas.getValorMonedaElegida(this.getElegirMoneda());
+		this.resultado = cantidad / valorMoneda;
+	}
+	
+	public void setCalcularResultadoMonedaExtranjeraPeso(double cantidad) {
+		double valorMoneda = listaNombreMonedas.getValorMonedaElegida(this.getElegirMoneda());
+		this.resultado = cantidad * valorMoneda;
+	}
+	
+	public double getCalcularResultado() {
+		return this.resultado;
+	}
+	
+	public void getResultado() {
+		double cantidad = this.getCantidadMoneda();
 		if (cantidad>0) {
-			JOptionPane.showMessageDialog(null, "Tienes $" + this.convertirMoneda(cantidad) + " dolares.");
-		}
-		
+			this.setCalcularResultadoPesoMonedaExtranjera(cantidad);
+			JOptionPane.showMessageDialog(null, "Tienes $" + this.getCalcularResultado() + " dolares.");
+		}	
 	}
 	
 	public int continuarPrograma() {
@@ -68,9 +93,5 @@ public class Conversor {
 	
 	public void terminarPrograma() {
 		JOptionPane.showMessageDialog(null, "Programa terminado");
-	}
-	
-	public void seleccionarTemperatura() {
-		JOptionPane.showMessageDialog(null, "Conversor de temperatura en progreso");
 	}
 }
