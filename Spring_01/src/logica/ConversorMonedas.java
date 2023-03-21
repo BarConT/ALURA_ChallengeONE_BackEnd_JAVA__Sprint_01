@@ -60,10 +60,10 @@ public class ConversorMonedas {
 		if (cantidad>0) {
 			if (listaConversorMonedas.dePesosAMonedaExtranjera(monedaElegida)) {
 				this.setCalcularResultadoPesoMonedaExtranjera(cantidad);
-				JOptionPane.showMessageDialog(null, "Tienes $" + this.getCalcularResultado() + " " + listaConversorMonedas.getNombreMonedaElegida(monedaElegida));
+				JOptionPane.showMessageDialog(null, "Tienes $" + String.format("%.2f", this.getCalcularResultado()) + " " + listaConversorMonedas.getNombreMonedaElegida(monedaElegida));
 			} else {
 				this.setCalcularResultadoMonedaExtranjeraPeso(cantidad);
-				JOptionPane.showMessageDialog(null, "Tienes $" + this.getCalcularResultado() + " pesos");
+				JOptionPane.showMessageDialog(null, "Tienes $" + String.format("%.2f", this.getCalcularResultado()) + " pesos");
 			}
 			
 				

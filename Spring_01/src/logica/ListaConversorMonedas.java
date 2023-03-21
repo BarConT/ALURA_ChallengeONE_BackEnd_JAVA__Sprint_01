@@ -10,11 +10,11 @@ public class ListaConversorMonedas {
 	double[] listaMonedasValor = new double[5];
 	
 	public ListaConversorMonedas() {
-		listaMonedas.add(new Moneda("Dólar", 202.18, "dolares"));
-		listaMonedas.add(new Moneda("Euro", 215.72, "euros"));
-		listaMonedas.add(new Moneda("Libra Esterlina", 246.19, "libras esterlinas"));	
-		listaMonedas.add(new Moneda("Yen Japonés", 1.53, "yenes"));
-		listaMonedas.add(new Moneda("Won sur-coreano", 0.15, "wones"));
+		listaMonedas.add(new Moneda("Dólar", 204.98, "dolares"));
+		listaMonedas.add(new Moneda("Euro", 220.67, "euros"));
+		listaMonedas.add(new Moneda("Libra Esterlina", 249.68, "libras esterlinas"));	
+		listaMonedas.add(new Moneda("Yen Japonés", 1.55, "yenes"));
+		listaMonedas.add(new Moneda("Won sur-coreano", 0.16, "wones"));
 	}
 	
 	public void setListaMonedasNombre() {
@@ -73,7 +73,6 @@ public class ListaConversorMonedas {
 		
 		for(int i=0; i<this.listaMonedas.size(); i++) {
 			if (listaPesoMonedaExtranjera[i].contains(monedaSeleccionada)) {
-				System.out.println("Que buevon");
 				return true;
 			}	
 		}
