@@ -2,6 +2,8 @@ package logica;
 
 import javax.swing.JOptionPane;
 
+import logica.temperatura.ConversorTemperaturas;
+
 public class Conversor {
 	
 	private String [] lista = {"Conversor de moneda", "Conversor de temperatura"};

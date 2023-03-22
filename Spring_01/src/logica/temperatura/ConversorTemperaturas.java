@@ -1,4 +1,4 @@
-package logica;
+package logica.temperatura;
 
 import javax.swing.JOptionPane;
 
