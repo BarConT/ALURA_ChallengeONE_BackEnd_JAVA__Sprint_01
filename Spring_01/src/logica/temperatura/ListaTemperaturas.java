@@ -5,9 +5,11 @@ import java.util.ArrayList;
 public class ListaTemperaturas {
 
 	ArrayList<Temperatura> listaTemperaturas = new ArrayList<Temperatura>();
-	String[] listaTemperaturaNombres;
-	char[] listaTemperaturaSimbolos;
-	int[] listaTemperaturaFormulas;
+	String[] listaTemperaturaNombres = new String[3];
+	char[] listaTemperaturaSimbolos = new char[3];
+	int[] listaTemperaturaFormulas = new int[3];
+	
+	String[] listaCelciusOtraTemp = new String[3];
 	
 	public ListaTemperaturas() {
 		
@@ -16,11 +18,11 @@ public class ListaTemperaturas {
 		listaTemperaturas.add(new Temperatura("Rankine", 0, 'R'));
 	}
 	
-	public String[] getListaTemperaturaNombres() {
+	/*public String[] getListaTemperaturaNombres() {
 		for (int i=0; i<listaTemperaturas.size(); i++) {
 			listaTemperaturaNombres[i] = listaTemperaturas.get(i).getNombre();
 		}
-		return getListaTemperaturaNombres();
+		return listaTemperaturaNombres;
 	}
 	
 	public char[] getListaTemperaturaSimbolos() {
@@ -35,5 +37,12 @@ public class ListaTemperaturas {
 			listaTemperaturaFormulas[i] = listaTemperaturas.get(i).getFormula();
 		}
 		return listaTemperaturaFormulas;
+	}*/
+	
+	public String[] getListaCelciusOtraTemp() {
+		for(int i=0; i<this.listaTemperaturas.size(); i++) {
+			listaCelciusOtraTemp[i] = "De " + listaTemperaturas.get(i).getNombre() + " a °C";	
+		}
+		return listaCelciusOtraTemp;
 	}
 }

@@ -21,7 +21,11 @@ public class Conversor {
 			}
 			
 		} else if (seleccionConversor.equals(lista[1])) {
-			conversorTemp.seleccionarTemperatura();
+			conversorTemp.setElegirTemperatura();
+			if (conversorTemp.getElegirTemperatura()!="") {
+				conversorTemp.setElegirCantidad();
+			}
+			
 		}
 	}
 	
