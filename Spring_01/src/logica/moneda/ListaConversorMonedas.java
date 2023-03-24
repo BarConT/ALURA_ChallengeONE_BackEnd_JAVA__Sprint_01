@@ -1,4 +1,4 @@
-package logica;
+package logica.moneda;
 
 import java.util.ArrayList;
 
@@ -6,8 +6,6 @@ public class ListaConversorMonedas {
 	ArrayList<Moneda> listaMonedas = new ArrayList<Moneda>();
 	String[] listaPesoMonedaExtranjera = new String[5];
 	String[] listaMonedaExtranjeraPeso = new String[5];
-	String[] listaMonedasNombre = new String[5];
-	double[] listaMonedasValor = new double[5];
 	
 	public ListaConversorMonedas() {
 		listaMonedas.add(new Moneda("Dólar", 204.98, "dolares"));
@@ -15,26 +13,6 @@ public class ListaConversorMonedas {
 		listaMonedas.add(new Moneda("Libra Esterlina", 249.68, "libras esterlinas"));	
 		listaMonedas.add(new Moneda("Yen Japonés", 1.55, "yenes"));
 		listaMonedas.add(new Moneda("Won sur-coreano", 0.16, "wones"));
-	}
-	
-	public void setListaMonedasNombre() {
-		for(int i=0; i<this.listaPesoMonedaExtranjera.length; i++) {
-			listaMonedasNombre[i] = listaMonedas.get(i).getNombreMoneda();
-		}
-	}
-	
-	public String[] getListaMonedasNombre() {
-		return listaMonedasNombre;
-	}
-	
-	public void setListaMonedasValor() {
-		for(int i=0; i<this.listaPesoMonedaExtranjera.length; i++) {
-			listaMonedasValor[i] = listaMonedas.get(i).getValorMoneda();
-		}
-	}
-	
-	public double[] getListaMonedasValor() {
-		return listaMonedasValor;
 	}
 	
 	public String[] getListaPesoMonedaExtranjera() {

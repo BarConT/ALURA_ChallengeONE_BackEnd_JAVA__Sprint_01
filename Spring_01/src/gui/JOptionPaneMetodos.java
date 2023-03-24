@@ -1,4 +1,4 @@
-package logica;
+package gui;
 
 import javax.swing.JOptionPane;
 

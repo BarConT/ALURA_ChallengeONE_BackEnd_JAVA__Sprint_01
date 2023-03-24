@@ -1,11 +1,12 @@
 package logica.temperatura;
 
 import java.util.stream.Stream;
-import logica.JOptionPaneMetodos;
+
+import gui.JOptionPaneMetodos;
 
 public class ConversorTemperaturas {
 	
-	private JOptionPaneMetodos JOptionPaneMetodos = new logica.JOptionPaneMetodos();
+	private JOptionPaneMetodos JOptionPaneMetodos = new gui.JOptionPaneMetodos();
 	private ListaTemperaturas listaTemp = new ListaTemperaturas();
 	
 	private String[] listaTemperaturaNombre = Stream.of(listaTemp.getListaCelciusOtraTemp(), listaTemp.getListaOtraTempCelcius()).flatMap(Stream::of).toArray(String[]::new);
@@ -22,7 +23,7 @@ public class ConversorTemperaturas {
 	}
 	
 	public void setElegirCantidad() {
-		cantidadElegida = JOptionPaneMetodos.elegirCantidad(temperaturaElegida);
+		cantidadElegida = JOptionPaneMetodos.elegirCantidad("Ingresa el valor de la temperatura que deseas convertir:");
 	}
 	
 	public Double getElegirCantidad() {
@@ -37,8 +38,8 @@ public class ConversorTemperaturas {
 	}
 	
 	public void setResultado() {
-		String eleccion = getElegirTemperatura();
-		double grados = this.getElegirCantidad();
+		String eleccion = this.getElegirTemperatura();
+		Double grados = this.getElegirCantidad();
 		
 		switch (eleccion) {
 			case "De °C a Fahrenheit":
