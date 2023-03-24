@@ -1,11 +1,10 @@
 package logica;
 
-import javax.swing.JOptionPane;
-
 import logica.temperatura.ConversorTemperaturas;
 
 public class Conversor {
 	
+	private JOptionPaneMetodos JOptionPaneMetodos = new logica.JOptionPaneMetodos();
 	private String [] lista = {"Conversor de moneda", "Conversor de temperatura"};
 	private ConversorTemperaturas conversorTemp = new ConversorTemperaturas();
 	private ConversorMonedas conversorMoneda = new ConversorMonedas();
@@ -24,24 +23,20 @@ public class Conversor {
 			conversorTemp.setElegirTemperatura();
 			if (conversorTemp.getElegirTemperatura()!="") {
 				conversorTemp.setElegirCantidad();
-			}
-			
+				conversorTemp.mostrarResultado();	
+			}	
 		}
 	}
 	
 	public String seleccionarConversor() {
-		try {
-			return (JOptionPane.showInputDialog(null, "Sellecione una opción de conversión", "Menu", JOptionPane.PLAIN_MESSAGE, null, lista, null).toString());
-		} catch (NullPointerException e) {
-			return "";
-		}
+		return JOptionPaneMetodos.elegirOpcion("Sellecione una opción de conversión", "Menu", lista);
 	}
 	
 	public int continuarPrograma() {
-		return JOptionPane.showConfirmDialog(null, "¿Desea continuar?");
+		return JOptionPaneMetodos.continuarPrograma();
 	}
 	
 	public void terminarPrograma() {
-		JOptionPane.showMessageDialog(null, "Programa terminado");
+		JOptionPaneMetodos.terminarPrograma();
 	}
 }

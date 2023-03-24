@@ -4,31 +4,38 @@ import javax.swing.JOptionPane;
 
 public class JOptionPaneMetodos {
 	
-	private String eleccion;
-	private double cantidad;
-	// private String resultado;
+	private Double cantidad;
 	
 	public String elegirOpcion(String mensaje, String titulo, String[] lista) {
 		try {
-			return eleccion = JOptionPane.showInputDialog(null, mensaje, mensaje, JOptionPane.PLAIN_MESSAGE, null, lista, null).toString();
+			return JOptionPane.showInputDialog(null, mensaje, titulo, JOptionPane.PLAIN_MESSAGE, null, lista, null).toString();
 		} catch (Exception e) {
-			return eleccion = "";
+			return "";
 		}
 	}
 	
-	public double elegirCantidad(String mensaje) {
+	public Double elegirCantidad(String mensaje) {
 		try {
-			return cantidad = Double.parseDouble(JOptionPane.showInputDialog(mensaje));
+			cantidad = Double.parseDouble(JOptionPane.showInputDialog(mensaje));
 		} catch (NumberFormatException e) {
 			JOptionPane.showMessageDialog(null, "Valor no válido");
-			return 0;
+			cantidad = null;
 		} catch (NullPointerException e) {
-			return 0;
-		}		
+			cantidad = null;
+		}	
+		return cantidad;
 	}
 	
 	public void mostrarResultado(String mensaje) {
 		JOptionPane.showMessageDialog(null, mensaje);
+	}
+	
+	public int continuarPrograma() {
+		return JOptionPane.showConfirmDialog(null, "¿Desea continuar?");
+	}
+	
+	public void terminarPrograma() {
+		JOptionPane.showMessageDialog(null, "Programa terminado");
 	}
 	
 }
