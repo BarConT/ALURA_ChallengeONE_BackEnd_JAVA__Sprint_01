@@ -14,19 +14,23 @@ public class Conversor {
 	public void iniciarPrograma() {
 		String seleccionConversor = this.seleccionarConversor();
 		
-		if (seleccionConversor.equals(lista[0])) {
-			conversorMoneda.setCantidadMoneda();
-			if (conversorMoneda.getCantidadMoneda()!=null) {
-				if (conversorMoneda.getCantidadMoneda()>0) {
+		if (seleccionConversor!=null) {
+			if (seleccionConversor.equals(lista[0])) {
+				conversorMoneda.setCantidadMoneda();
+				if (conversorMoneda.getCantidadMoneda()!=null && conversorMoneda.getCantidadMoneda()>0) {
 					conversorMoneda.setElegirMoneda();
-					conversorMoneda.getResultado();
-				}	
-			}
-		} else if (seleccionConversor.equals(lista[1])) {	
-			conversorTemp.setElegirCantidad();
-			if (conversorTemp.getElegirCantidad()!=null) {
-				conversorTemp.setElegirTemperatura();
-				conversorTemp.mostrarResultado();
+					if (conversorMoneda.getElegirMoneda()!=null) {
+						conversorMoneda.getResultado();
+					}	
+				}
+			} else if (seleccionConversor.equals(lista[1])) {	
+				conversorTemp.setElegirCantidad();
+				if (conversorTemp.getElegirCantidad()!=null) {
+					conversorTemp.setElegirTemperatura();
+					if (conversorTemp.getElegirTemperatura()!=null) {
+						conversorTemp.mostrarResultado();
+					}	
+				}
 			}
 		}
 	}
