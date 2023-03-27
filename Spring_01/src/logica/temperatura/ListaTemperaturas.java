@@ -10,21 +10,21 @@ public class ListaTemperaturas {
 	
 	public ListaTemperaturas() {
 		
-		listaTemperaturas.add(new Temperatura("Fahrenheit", 'F'));
-		listaTemperaturas.add(new Temperatura("Kelvin", 'K'));
-		listaTemperaturas.add(new Temperatura("Rankine", 'R'));
+		listaTemperaturas.add(new Temperatura("°Fahrenheit"));
+		listaTemperaturas.add(new Temperatura("Kelvin"));
+		listaTemperaturas.add(new Temperatura("°Rankine"));
 	}
 	
 	public String[] getListaCelciusOtraTemp() {
 		for(int i=0; i<this.listaTemperaturas.size(); i++) {
-			listaOtraTempCelcius[i] = "De °C a " + listaTemperaturas.get(i).getNombre();	
+			listaOtraTempCelcius[i] = "De °Celcius a " + listaTemperaturas.get(i).getNombre();	
 		}
 		return listaOtraTempCelcius;
 	}
 	
 	public String[] getListaOtraTempCelcius() {
 		for(int i=0; i<this.listaTemperaturas.size(); i++) {
-			listaCelciusOtraTemp[i] = "De " + listaTemperaturas.get(i).getNombre() + " a °C";	
+			listaCelciusOtraTemp[i] = "De " + listaTemperaturas.get(i).getNombre() + " a °Celcius";	
 		}
 		return listaCelciusOtraTemp;
 	}

@@ -10,7 +10,7 @@ public class JOptionPaneMetodos {
 		try {
 			return JOptionPane.showInputDialog(null, mensaje, titulo, JOptionPane.PLAIN_MESSAGE, null, lista, null).toString();
 		} catch (Exception e) {
-			return "";
+			return null;
 		}
 	}
 	
