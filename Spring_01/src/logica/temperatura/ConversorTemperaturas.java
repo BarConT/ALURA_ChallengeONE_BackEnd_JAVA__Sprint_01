@@ -30,7 +30,7 @@ public class ConversorTemperaturas {
 	}
 	
 	public Double getElegirCantidad() {
-		return cantidadElegida;
+		return this.cantidadElegida;
 	}
 	
 	public void mostrarResultado() {
@@ -45,32 +45,32 @@ public class ConversorTemperaturas {
 		Double grados = this.getElegirCantidad();
 		
 		switch (eleccion) {
-			case "De °C a Fahrenheit":
+			case "De °Celcius a °Fahrenheit":
 				resultado = (grados*9/5)+32;
 				temperaturaInicial = "°Celcius";
 				temperaturaFinal = "°Fahrenheit";
 				break;
-			case "De °C a Kelvin":
+			case "De °Celcius a Kelvin":
 				resultado = grados + 273.15;
 				temperaturaInicial = "°Celcius";
 				temperaturaFinal = "Kelvin";
 				break;
-			case "De °C a Rankine":
+			case "De °Celcius a °Rankine":
 				resultado = (grados*9/5)+491.67;
 				temperaturaInicial = "°Celcius";
 				temperaturaFinal = "°Rankine";
 				break;
-			case "De Fahrenheit a °C":
+			case "De °Fahrenheit a °Celcius":
 				resultado = (grados-32)*5/9;
 				temperaturaInicial = "°Fahrenheit";
 				temperaturaFinal = "°Celcius";
 				break;	
-			case "De Kelvin a °C":
+			case "De Kelvin a °Celcius":
 				resultado = grados-273.15;
 				temperaturaInicial = "Kelvin";
 				temperaturaFinal = "°Celcius";
 				break;	
-			case "De Rankine a °C":
+			case "De °Rankine a °Celcius":
 				resultado = (grados-491.67)*5/9;;
 				temperaturaInicial = "°Rankine";
 				temperaturaFinal = "°Celcius";
@@ -79,7 +79,7 @@ public class ConversorTemperaturas {
 	}
 	
 	public Double getResultado() {
-		return resultado;
+		return this.resultado;
 	}
 	
 }
